@@ -1,5 +1,9 @@
 import org.openjdk.jol.vm.VM;
 
+// java does not support pass by reference unlike c++ (by using & one can)
+// when passed it is always the copy of the memory address as strings and wrappers are immutable
+// they create a new object on change
+// All the wrapper classes and String class is immutable
 public class Demo {
 
     public static void main(String[] args) {
@@ -27,10 +31,9 @@ public class Demo {
     public static void printBall(Ball b) {
         System.out.println(VM.current().addressOf(b));
         b.setColor("red");
-        System.out.println(b);
     }
 }
-
+// Mutable class
 class Ball {
     private String color;
     public Ball(String color) {
